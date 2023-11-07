@@ -1,0 +1,7 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: large;
+    background-color: #525759;
+    background-image: url('../imgs/background.jpg');
+    user-select: none;
+}
