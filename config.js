@@ -1,5 +1,7 @@
 const config = {
-  host: 'http://localhost',
+  protocol: 'http',
+  protoco_ws: 'ws',
+  host: 'localhost',
   port: '8800'
 }
 

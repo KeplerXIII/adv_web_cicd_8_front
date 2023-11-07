@@ -5,3 +5,44 @@ body {
     background-image: url('../imgs/background.jpg');
     user-select: none;
 }
+
+.chat-container {
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #9b9b9b;
+    padding: 10px;
+    min-width: 500px;
+    max-width: 800px;
+}
+
+.user-message-container {
+    max-height: 400px;
+    white-space: pre;
+    display: flex;
+    min-height: 300px;
+}
+
+.user-list {
+    border-radius: 10px;
+    flex: 1;
+    background-color: #bcbcbc;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chat-window {
+    border-radius: 10px;
+    flex: 2;
+    background-color: #eaeaea;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.message-input {
+    margin-left: 5px;
+    margin-top: 5px;
+    min-width: 400px;
+}
