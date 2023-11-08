@@ -1,2 +1,2 @@
 Build status: [![Build status](https://ci.appveyor.com/api/projects/status/6672fp0mpe7julp6?svg=true)](https://ci.appveyor.com/project/KeplerXIII/adv-web-cicd-5)  
-Site link: [Github pages - Tasker](https://keplerxiii.github.io/adv_web_cicd_8_front/)
+Site link: [Github pages - Chat](https://keplerxiii.github.io/adv_web_cicd_8_front/)
