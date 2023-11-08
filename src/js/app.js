@@ -59,12 +59,7 @@ ws.addEventListener('message', (e) => {
   const { type } = data
   if (type === 'msg') {
     const { name, message } = data
-    if (message === 'Вошел в чат') {
-      chatBox.appendChild(document.createTextNode(`${name}: ${message}` + '\n'))
-      userLits.appendChild(document.createTextNode(`${name}` + '\n'))
-      chatBox.scrollTop = chatBox.scrollHeight
-      return
-    }
+
     if (name === selfName) {
       chatBox.appendChild(document.createTextNode(`Вы: ${message}` + '\n'))
       chatBox.scrollTop = chatBox.scrollHeight
