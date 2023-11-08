@@ -1,6 +1,6 @@
 const config = {
   protocol: 'https',
-  protoco_ws: 'ws',
+  protoco_ws: 'wss',
   host: 'chat-k3qc.onrender.com',
   port: ''
 }
