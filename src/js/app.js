@@ -16,34 +16,31 @@ const nameBox = document.querySelector('.name-container')
 let name = ''
 let selfName = ''
 
-sendNameBtn.addEventListener('click', async (e) => {
-  e.preventDefault()
-  name = inputName.value
-  if (name.length < 3 || name.length > 12) {
-    inputName.value = ''
-    inputName.placeholder = 'Имя может быть >3 и <12'
-    return
-  }
-  if (await userAPI.addUser(name) === 'OK' && ws.OPEN) {
-    ws.send(JSON.stringify({ name, message: 'Вошел в чат' }))
-    nameBox.classList.add('hidden')
-    selfName = name
-  } else {
-    inputName.value = ''
-    inputName.placeholder = 'Имя занято'
-  }
-})
-
-sendMessageBtn.addEventListener('click', () => {
-  const message = inputMessage.value
-  if (!message) return
-  ws.send(JSON.stringify({ name, message }))
-  inputMessage.value = ''
-})
-
 ws.addEventListener('open', (e) => {
-  console.log(e)
-  console.log('ws open')
+  sendNameBtn.addEventListener('click', async (e) => {
+    e.preventDefault()
+    name = inputName.value
+    if (name.length < 3 || name.length > 12) {
+      inputName.value = ''
+      inputName.placeholder = 'Имя может быть >3 и <12'
+      return
+    }
+    if (await userAPI.addUser(name) === 'OK' && ws.OPEN) {
+      ws.send(JSON.stringify({ name, message: 'Вошел в чат' }))
+      nameBox.classList.add('hidden')
+      selfName = name
+    } else {
+      inputName.value = ''
+      inputName.placeholder = 'Имя занято'
+    }
+  })
+
+  sendMessageBtn.addEventListener('click', () => {
+    const message = inputMessage.value
+    if (!message) return
+    ws.send(JSON.stringify({ name, message }))
+    inputMessage.value = ''
+  })
 })
 
 ws.addEventListener('close', (e) => {
