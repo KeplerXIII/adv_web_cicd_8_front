@@ -1,8 +1,8 @@
 const config = {
-  protocol: 'http',
+  protocol: 'https',
   protoco_ws: 'ws',
-  host: 'localhost',
-  port: '8800'
+  host: 'chat-k3qc.onrender.com',
+  port: ''
 }
 
 export default config
