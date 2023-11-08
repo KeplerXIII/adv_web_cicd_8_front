@@ -86,7 +86,6 @@ ws.addEventListener('message', (e) => {
 
   if (type === 'users') {
     const { users } = data
-    console.log(data)
     userLits.innerHTML = ''
     users.forEach(elem => {
       const { name } = elem
