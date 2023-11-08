@@ -14,6 +14,7 @@ const sendNameBtn = document.querySelector('.send-name-button')
 const nameBox = document.querySelector('.name-container')
 
 let name = ''
+let selfName = ''
 
 sendNameBtn.addEventListener('click', async (e) => {
   e.preventDefault()
@@ -23,9 +24,10 @@ sendNameBtn.addEventListener('click', async (e) => {
     inputName.placeholder = 'Имя может быть >3 и <12'
     return
   }
-  if (await userAPI.addUser(name) === 'OK') {
+  if (await userAPI.addUser(name) === 'OK' && ws.OPEN) {
     ws.send(JSON.stringify({ name, message: 'Вошел в чат' }))
     nameBox.classList.add('hidden')
+    selfName = name
   } else {
     inputName.value = ''
     inputName.placeholder = 'Имя занято'
@@ -60,10 +62,18 @@ ws.addEventListener('message', (e) => {
   const { type } = data
   if (type === 'msg') {
     const { name, message } = data
-    chatBox.appendChild(document.createTextNode(`${name}: ${message}` + '\n'))
-    chatBox.scrollTop = chatBox.scrollHeight
     if (message === 'Вошел в чат') {
+      chatBox.appendChild(document.createTextNode(`${name}: ${message}` + '\n'))
       userLits.appendChild(document.createTextNode(`${name}` + '\n'))
+      chatBox.scrollTop = chatBox.scrollHeight
+      return
+    }
+    if (name === selfName) {
+      chatBox.appendChild(document.createTextNode(`Вы: ${message}` + '\n'))
+      chatBox.scrollTop = chatBox.scrollHeight
+    } else {
+      chatBox.appendChild(document.createTextNode(`${name}: ${message}` + '\n'))
+      chatBox.scrollTop = chatBox.scrollHeight
     }
   }
 
