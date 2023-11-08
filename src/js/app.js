@@ -16,7 +16,8 @@ const nameBox = document.querySelector('.name-container')
 let name = ''
 let selfName = ''
 
-ws.addEventListener('open', (e) => {
+ws.addEventListener('open', () => {
+  console.log('ws open')
   sendNameBtn.addEventListener('click', async (e) => {
     e.preventDefault()
     name = inputName.value
